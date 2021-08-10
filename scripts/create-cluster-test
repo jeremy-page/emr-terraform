@@ -1,0 +1,14 @@
+#!/bin/sh
+aws emr create-cluster \
+	--applications Name=Spark Name=Zeppelin Name=Ganglia  \
+	--ec2-attributes '{"KeyName":"PIXF","InstanceProfile":"emr-ec2-role-test-dev","SubnetId":"subnet-2f696c21"}' \
+	--service-role emr-service-role-test-dev \
+	--enable-debugging \
+	--release-label emr-6.3.0  \
+	--log-uri 's3n://test-emr-logs-dev/elasticmapreduce/' \
+	--name 'test-cluster-tuned'  \
+	--instance-groups '[{"InstanceCount":1,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":4}]},"InstanceGroupType":"MASTER","InstanceType":"r6g.xlarge","Name":"Master Instance Group"},{"InstanceCount":2,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":32,"VolumeType":"gp2"},"VolumesPerInstance":4}]},"InstanceGroupType":"CORE","InstanceType":"r6g.2xlarge","Name":"Core Instance Group"}]' \
+	--configurations file://emr-config.json \
+  --bootstrap-actions '[{"Path":"s3://emr-data-test-dev/config/common/emr_bootstrap.sh","Name":"Add Developers SSH Keys"}]' \
+	--scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
+	--region us-east-1

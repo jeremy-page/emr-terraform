@@ -1,0 +1,28 @@
+[
+  {
+    "Classification": "spark",
+    "Properties": {
+      "maximizeResourceAllocation": "true"
+    }
+  },
+  {
+    "Classification": "spark-defaults",
+    "Properties": {
+      "spark.executor.extraJavaOptions": "-XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:+UnlockDiagnosticVMOptions -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:OnOutOfMemoryError='kill -9 %p'",
+      "spark.driver.extraJavaOptions": "-XX:+UseG1GC -XX:MaxGCPauseMillis=10000 -XX:+UnlockDiagnosticVMOptions -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintTenuringDistribution -XX:OnOutOfMemoryError='kill -9 %p'"
+    }
+  },
+  {
+    "Classification": "spark-env",
+    "Properties": {},
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "PYSPARK_PYTHON": "/usr/bin/python3"
+        },
+        "Configurations": []
+      }
+    ]
+  }
+]
