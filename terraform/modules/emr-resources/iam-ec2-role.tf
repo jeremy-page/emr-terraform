@@ -2,7 +2,6 @@ data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "emr_ec2_role" {
   name                 = "emr-ec2-role-${var.project_name}-${var.environment}"
-  path                 = "/delegatedadmin/developer/"
 
   assume_role_policy = <<EOF
 {
@@ -34,7 +33,6 @@ data "template_file" "emr_ec2_policy" {
 resource "aws_iam_policy" "emr_ec2" {
   name        = "emr-ec2-${var.project_name}-${var.environment}"
   description = "EMR EC2 Policy"
-  path        = "/delegatedadmin/developer/"
 
   policy = data.template_file.emr_ec2_policy.rendered
 }
@@ -47,5 +45,4 @@ resource "aws_iam_role_policy_attachment" "emr_ec2" {
 resource "aws_iam_instance_profile" "emr_ec2_role" {
   name = "emr-ec2-role-${var.project_name}-${var.environment}"
   role = aws_iam_role.emr_ec2_role.name
-  path = "/delegatedadmin/developer/"
 }

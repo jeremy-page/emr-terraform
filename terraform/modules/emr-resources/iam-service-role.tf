@@ -1,7 +1,6 @@
 #Allows EMR to call other AWS Services such as EC2 on your behalf.
 resource "aws_iam_role" "emr_service_role" {
   name                 = "emr-service-role-${var.project_name}-${var.environment}"
-  path                 = "/delegatedadmin/developer/"
 
   assume_role_policy = <<EOF
 {

@@ -4,7 +4,7 @@
 
 terraform {
   backend "s3" {
-    bucket  = "sb-demo-emr-terraform-state"
+    bucket  = "sb-demo-emr-studio-terraform-state"
     key     = "emr-studio-emr/dev-emr-studio.tfstate"
     region  = "us-east-1"
     encrypt = "true"
@@ -19,6 +19,7 @@ provider "aws" {
 module "emr-resources" {
   source = "../modules/emr-resources"
 
+  account_id          = data.aws_caller_identity.current.account_id
   application         = var.application
   emr_subnet_id       = var.emr_subnet1
   environment         = var.environment
