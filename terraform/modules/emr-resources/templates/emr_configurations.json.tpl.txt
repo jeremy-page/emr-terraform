@@ -1,0 +1,25 @@
+[
+  {
+    "Classification": "spark",
+    "Properties": {}
+  },
+  {
+    "Classification": "zeppelin-env",
+    "Properties": {},
+    "Configurations": [
+      {
+        "Classification": "export",
+        "Properties": {
+          "PYSPARK_PYTHON": "/usr/bin/python3",
+          "ZEPPELIN_NOTEBOOK_S3_BUCKET": "${ingress_bucket_name}",
+          "ZEPPELIN_INTERPRETER_DEP_MVNREPO": "https://repo1.maven.org/maven2",
+          "ZEPPELIN_NOTEBOOK_S3_USER": "notebooks",
+          "ZEPPELIN_NOTEBOOK_S3_KMS_KEY_ID": "54c1ccab-704e-47e4-8936-00a712f203b2",
+          "ZEPPELIN_NOTEBOOK_S3_KMS_KEY_REGION": "us-east-1",
+          "ZEPPELIN_NOTEBOOK_STORAGE": "org.apache.zeppelin.notebook.repo.S3NotebookRepo",
+          "ZEPPELIN_NOTEBOOK_S3_SSE": "true"
+        }
+      }
+    ]
+  }
+]
