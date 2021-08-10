@@ -8,7 +8,7 @@ resource "aws_kms_key" "emr" {
             "Sid": "Allow access for Key Administrators",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${var.account_id}:user/jeremy.page@semanticbits.com"
+                "AWS": "arn:aws:iam::207723119147:user/jeremy.page@semanticbits.com"
             },
             "Action": "kms:*",
             "Resource": "*"

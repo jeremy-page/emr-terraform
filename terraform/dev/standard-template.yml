@@ -1,0 +1,19 @@
+Parameters:
+  SubnetId:
+    Type: "String"
+    Default: "subnet-311d5e57
+  ClusterName:
+    Type: "String"
+    Default: "Standard Cluster"
+  EmrRelease:
+    Type: "String"
+    Default: "emr-6.2.0"
+    AllowedValues:
+    - "emr-6.2.0"
+    - "emr-5.32.0"
+  ClusterInstanceType:
+    Type: "String"
+    Default: "r6.xlarge"
+    AllowedValues:
+    - "r6.xlarge"
+    - "r6.2xlarge"

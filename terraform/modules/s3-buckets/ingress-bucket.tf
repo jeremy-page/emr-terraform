@@ -1,6 +1,6 @@
 # Bucket for bringing data into EMR
 resource "aws_s3_bucket" "ingress" {
-  bucket = "scoring-data-${var.project_name}-${var.environment}"
+  bucket = "emr-data-${var.project_name}-${var.environment}"
   acl    = "private"
 
   server_side_encryption_configuration {
@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "ingress" {
 
   logging {
     target_bucket = aws_s3_bucket.logging.id
-    target_prefix = "logs/${var.project_name}/${var.environment}/scoring-data/"
+    target_prefix = "logs/${var.project_name}/${var.environment}/emr-data/"
   }
 
   lifecycle_rule {

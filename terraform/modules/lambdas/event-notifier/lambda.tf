@@ -37,7 +37,7 @@ resource "aws_lambda_function" "emr_event_notifier" {
   environment {
     variables = {
       "channel"  = "p-qpp-sub-alerts"
-      "hook_url" = "https://hooks.slack.com/services/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"
+      "hook_url" = "add me"
     }
   }
 
