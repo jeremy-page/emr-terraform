@@ -8,7 +8,7 @@ resource "aws_kms_key" "emr" {
             "Sid": "Allow access for Key Administrators",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/ct-ado-qppscoring-application-admin"
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:group/Admin"
             },
             "Action": "kms:*",
             "Resource": "*"

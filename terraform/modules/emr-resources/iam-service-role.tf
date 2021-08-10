@@ -2,7 +2,6 @@
 resource "aws_iam_role" "emr_service_role" {
   name                 = "emr-service-role-${var.project_name}-${var.environment}"
   path                 = "/delegatedadmin/developer/"
-  permissions_boundary = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/cms-cloud-admin/developer-boundary-policy"
 
   assume_role_policy = <<EOF
 {
